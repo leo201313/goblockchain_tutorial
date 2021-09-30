@@ -20,7 +20,7 @@ func main() {
 	if ok {
 		txPool = append(txPool, tempTx)
 	}
-	chain.AddBlock(txPool)
+	chain.Mine(txPool)
 	txPool = make([]*transaction.Transaction, 0)
 	property, _ = chain.FindUTXOs([]byte("Leo Cao"))
 	fmt.Println("Balance of Leo Cao: ", property)
@@ -39,7 +39,7 @@ func main() {
 	if ok {
 		txPool = append(txPool, tempTx)
 	}
-	chain.AddBlock(txPool)
+	chain.Mine(txPool)
 	txPool = make([]*transaction.Transaction, 0)
 	property, _ = chain.FindUTXOs([]byte("Leo Cao"))
 	fmt.Println("Balance of Leo Cao: ", property)
@@ -68,7 +68,7 @@ func main() {
 		txPool = append(txPool, tempTx)
 	}
 
-	chain.AddBlock(txPool)
+	chain.Mine(txPool)
 	txPool = make([]*transaction.Transaction, 0)
 
 	for _, block := range chain.Blocks {
