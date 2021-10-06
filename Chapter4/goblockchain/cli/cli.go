@@ -70,9 +70,9 @@ func (cli *CommandLine) send(from, to string, amount int) {
 		fmt.Println("Failed to create transaction")
 		return
 	}
-	cb := blockchain.CreateCandidateBlock()
-	cb.AddTransaction(tx)
-	cb.SaveFile()
+	tp := blockchain.CreateTransactionPool()
+	tp.AddTransaction(tx)
+	tp.SaveFile()
 	fmt.Println("Success!")
 }
 

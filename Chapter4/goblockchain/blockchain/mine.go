@@ -6,12 +6,12 @@ import (
 )
 
 func (bc *BlockChain) RunMine() {
-	candidateBlock := CreateCandidateBlock()
+	transactionPool := CreateTransactionPool()
 	//In the near future, we'll have to validate the transactions first here.
-	block := CreateBlock(bc.LastHash, candidateBlock.PubTx) //PoW has been done here.
-	if block.ValidatePoW() {
-		bc.AddBlock(block)
-		err := RemoveCandidateBlockFile()
+	candidateBlock := CreateBlock(bc.LastHash, transactionPool.PubTx) //PoW has been done here.
+	if candidateBlock.ValidatePoW() {
+		bc.AddBlock(candidateBlock)
+		err := RemoveTransactionPoolFile()
 		utils.Handle(err)
 		return
 	} else {
